@@ -316,34 +316,34 @@ class Genome:
     def mutate(self):
         while (self.mutation_occurs("char_delete")):
             i = random.randrange(len(self.chromosomes))
-            p = random.randrange(len(chromosome))
+            p = random.randrange(len(self.chromosomes[i]))
             self.chromosomes[i] = self.chromosomes[i][:p]+self.chromosomes[i][p+1:]
         while (self.mutation_occurs("char_insert")):
             i = random.randrange(len(self.chromosomes))
-            p = random.randrange(len(chromosome))
+            p = random.randrange(len(self.chromosomes[i]))
             c = random.choice(self.desc.alphabet)
             self.chromosomes[i] = self.chromosomes[i][:p]+c+self.chromosomes[i][p:]
         while (self.mutation_occurs("char_replace")):
             i = random.randrange(len(self.chromosomes))
-            p = random.randrange(len(chromosome))
+            p = random.randrange(len(self.chromosomes[i]))
             c = random.choice(self.desc.alphabet)
             self.chromosomes[i] = self.chromosomes[i][:p]+c+self.chromosomes[i][p+1:]
         while (self.mutation_occurs("frag_delete")):
             i = random.randrange(len(self.chromosomes))
-            p = random.randrange(len(chromosome)-1)
-            l = random.rangrange(1, len(chromosome)-p)
+            p = random.randrange(len(self.chromosomes[i])-1)
+            l = random.randrange(1, len(self.chromosomes[i])-p)
             self.chromosomes[i] = self.chromosomes[i][:p]+self.chromosomes[i][p+l:]
         while (self.mutation_occurs("frag_move")):
             i = random.randrange(len(self.chromosomes))
-            p = (random.randrange(len(chromosome)-1),
-                random.randrange(len(chromosome)-1))
-            l = random.rangrange(1, len(chromosome)-p)
+            p = (random.randrange(len(self.chromosomes[i])-1),
+                random.randrange(len(self.chromosomes[i])-1))
+            l = random.randrange(1, len(self.chromosomes[i])-p[0])
             # TODO implement
         while (self.mutation_occurs("frag_copy")):
             i = random.randrange(len(self.chromosomes))
-            p = (random.randrange(len(chromosome)-1),
-                random.randrange(len(chromosome)-1))
-            l = random.rangrange(1, len(chromosome)-p)
+            p = (random.randrange(len(self.chromosomes[i])-1),
+                random.randrange(len(self.chromosomes[i])-1))
+            l = random.randrange(1, len(self.chromosomes[i])-p[0])
             # TODO implement
         while (self.mutation_occurs("chromosome_delete")):
             i = random.randrange(len(self.chromosomes))
@@ -379,3 +379,5 @@ class Genome:
 
     def __getitem__(self, y):
         return self.chromosomes[y]
+
+__all__ = ["Descriptor", "Device", "Genome"]
