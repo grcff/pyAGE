@@ -1,0 +1,15 @@
+        pyAGE - A Python implementation of the Analog Genetic Encoding
+
+
+pyAGE is a python implementation of the Analog Genetic Encoding[1] (or AGE for
+short) proposed by Claudio Mattiussi and Dario Floreano.
+pyAGE also uses Center of Mass Encoding[2] (or CoME for short) for the genetic
+encoding of scalar values. CoME was developed by Claudio Mattiussi, Peter
+Dürr and Dario Floreano.
+
+
+References:
+ [1] Mattiussi C. & Floreano D. (2007), Analog Genetic Encoding for Evolution
+     of Circuits and Networks
+ [2] Mattiussi C., Dürr P. & Floreano D., Center of Mass Encoding: A Self-
+     Adaptive Representation with Adjustable Redundancy for Real-Valued Parameters
