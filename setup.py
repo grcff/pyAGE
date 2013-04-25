@@ -6,5 +6,5 @@ setup(name = "pyAGE",
       author = "Janosch Gräf",
       author_email = "janosch.graef@gmx.net",
       url = "http://janosch-graef.org/",
-      py_modules = ["age"],
+      packages = ["age"],
       license = "GNU GPL v3")

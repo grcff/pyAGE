@@ -1,16 +1,26 @@
 import age
+from termcolor import colored
+
+def print_sequence(seq):
+    BASECOLORS = {'A': 'on_yellow',
+                  'C': 'on_cyan',
+                  'G': 'on_red',
+                  'T': 'on_magenta'}
+    cseq = ""
+    for b in seq:
+        cseq += colored(b, 'grey', BASECOLORS[b], attrs = ["bold"])
+    return cseq
 
 def print_genome(genome, name):
-    print("Genome '"+name+"' ("+str(len(genome.chromosomes))+"):")
-    for i in range(len(genome)):
-        print("Chromosome "+str(i+1)+": "+genome[i])
-    for i in range(len(genome.devices)):
-        d = genome.devices[i]
-        print("Device "+str(i+1)+": "+str(d))
-        for j in range(len(d.parameters)):
-            print(" Parameter "+str(j+1)+": "+str(d.parameters[j][1])+", "+d.parameters[j][0])
+    print("Genome '%s' (%d):"%(name, len(genome.chromosomes)))
+    for i, c in enumerate(genome.chromosomes):
+        print("Chromosome %d: %s"%(i + 1, print_sequence(c)))
+    for i, d in enumerate(genome.devices):
+        print("Device %d: %s"%(i + 1, print_sequence(d.device)))
+        for j, p in enumerate(d.parameters):
+            print(" Parameter %d: %f, %s"%(j + 1, d.parameters[j][1], print_sequence(d.parameters[j][0])))
         for j in range(len(d.terminals)):
-            print(" Terminal "+str(j+1)+": "+d.terminals[j])
+            print(" Terminal %d: %s"%(j + 1, print_sequence(d.terminals[j])))
     print()
 
 
